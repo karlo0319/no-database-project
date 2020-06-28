@@ -8,6 +8,7 @@ Header {
   font-size: 3rem;
   font-weight: bolder;
   box-sizing: border-box;
+  padding: 5px;
   
 }
 
@@ -62,7 +63,6 @@ Footer {
  span {
   display: flex;
   text-align: center;
-  display: flex;
 }
 
 .food-choices {
@@ -71,23 +71,71 @@ Footer {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: bolder;
-  /* background: black; */
   background-image: url("https://www.festivalclaca.cat/pics/b/2/28323_button-background-png.png");
   background-repeat: no-repeat;
   background-size: cover;
   color: black;
   padding: 10px 25px; 
   margin-left: 35px;
+  pointer-events: visiblePainted;
+}
+
+.name-input {
+  position: absolute;
+  left: 30%;
+  top: 80%;
+  width: 20vw;
+  text-align: center;
 }
 
 button {
   position: absolute;
-  left: 35%;
+  left: 34%;
   top: 85%;
   margin: 10px;
   width: 15vw;
   font-weight: bolder;
-  /* background-image: url("https://library.kissclipart.com/20180922/sle/kissclipart-red-button-png-clipart-button-clip-art-74ade5a26a211b01.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; */
+}
+
+.right-side-box {
+  position: relative;
+}
+
+.base-circle { 
+  width: 14vw;
+  height: 24vh;
+  background-color: hsla(51, 41%, 25%, 0.61);
+  border-radius: 50%;
+  border-color: black;
+  border-style: solid;
+  border-width: 3px;
+  position: absolute;
+  top:6%;
+  left:2%;
+}
+
+.sides-circle { 
+  width: 14vw;
+  height: 24vh;
+  background-color: hsla(51, 41%, 25%, 0.61);
+  border-radius: 50%;
+  border-color: black;
+  border-style: solid;
+  border-width: 3px;
+  position: absolute;
+  top:6%;
+  left: 64%;
+}
+
+.entree-circle {
+  width: 22vw;
+  height: 40vh;
+  background-color: hsla(51, 41%, 25%, 0.61);
+  border-radius: 50%;
+  border-color: black;
+  border-style: solid;
+  border-width: 3px;
+  position: absolute;
+  top: 23%;
+  left: 25%;
 }

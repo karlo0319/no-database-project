@@ -5,23 +5,21 @@ class SidesComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            sidesArr: props.sidesArr
         }
     }
 
     // handleOnClick() 
 
     render() {
-        const { sidesChoices } = this.props;
+        const { sidesChoices, sidesOnClick } = this.props;
         const sidesOptionsArr = sidesChoices.map(foodchoice => {
             return (
                 <div>
-                    {foodchoice.id > 6 && foodchoice.id <= 9 ?
                         <div className="food-choices" key={foodchoice.id}>
-                            <span onClick={this.handleOnClick}>{foodchoice.name}</span>
-                            {/* <button onClick={this.handleOnClick}><img src={foodchoice.image} alt={foodchoice.name}/></button> */}
+                        <span onClick={() => sidesOnClick(foodchoice.id)}>{foodchoice.name}</span>
+
                         </div>
-                        : null}
                 </div>
             )
         })
