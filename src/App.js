@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import BaseComponent from './Components/BaseComponent';
+import EntreeComponent from './Components/EntreeComponent';
+import SidesComponent from './Components/SidesComponent';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      foodChoices: []
+    }
+  }
+
+
+  componentDidMount = () => {
+    axios.get('/api/foodchoices').then(res => {
+      this.setState({
+        foodChoices: res.data
+      })
+    })
+  }
+
+  render() {
+
+    return (
+      <div className="App" >
+        <Header />
+        <div className="main-holder">
+          <div className="left-side-box">
+            <BaseComponent baseChoices={this.state.foodChoices} />
+            <EntreeComponent entreeChoices={this.state.foodChoices} />
+            <SidesComponent sidesChoices={this.state.foodChoices} />
+            <button> SUBMIT </button>
+          </div>
+          <div>
+            <div className="right-side-box">
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
 }
 
 export default App;
