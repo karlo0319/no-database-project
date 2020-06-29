@@ -5,6 +5,7 @@ import Footer from './Components/Footer';
 import BaseComponent from './Components/BaseComponent';
 import EntreeComponent from './Components/EntreeComponent';
 import SidesComponent from './Components/SidesComponent';
+import CustomerComponent from './Components/CustomerComponent';
 import axios from 'axios';
 
 class App extends Component {
@@ -16,7 +17,9 @@ class App extends Component {
       sidesArr:[],
       baseChoiceArr:[],
       entreeChoiceArr:[],
-      sidesChoiceArr:[]
+      sidesChoiceArr:[],
+      nameInput:"",
+      customerObj: {}
     }
   }
 
@@ -51,6 +54,35 @@ class App extends Component {
     this.setState ({sidesChoiceArr: newSidesChoiceArr})
   }
 
+  handleInput = (e) => {
+    this.setState ({
+      nameInput: e.target.value
+    })
+  }
+
+//   handleSubmit = () => {
+//     this.setState({
+//       customerObj: {
+//         name: this.state.nameInput,
+//         sideChoice: this.state.sidesChoiceArr,
+//         entreeChoice: this.state.entreeChoiceArr,
+//         baseChoice: this.state.baseChoiceArr
+//       }, 
+//       sidesChoiceArr: [],
+//       entreeChoiceArr:[],
+//       baseChoiceArr: []
+//   })
+// }
+
+handleSubmit = (e) => {
+  this.setState({
+      sidesChoiceArr: [],
+      entreeChoiceArr: [],
+      baseChoiceArr: [],
+      nameInput: e.target.value
+    })
+}
+
 
   render() { 
     // console.log(this.state.baseChoiceArr)
@@ -74,14 +106,15 @@ class App extends Component {
             <BaseComponent baseChoices={this.state.baseArr} baseOnClick={this.baseChoiceClick}/>
             <EntreeComponent entreeChoices={this.state.entreeArr} entreeOnClick={this.entreeChoiceClick}/>
             <SidesComponent sidesChoices={this.state.sidesArr} sidesOnClick={this.sidesChoiceClick}/>
-            <input className="name-input" placeholder="Type Customer Name Here"/>
-            <button> SUBMIT </button>
+            <input className="name-input" placeholder="Type Customer Name Here" value={this.state.nameInput} onChange={(e) => this.handleInput(e)}/>
+            <button onClick={this.handleSubmit}> SUBMIT </button>
           </div>
           <div>
             <div className="right-side-box">
               <img className="base-circle" src={newBaseImage} alt=""/>
               <img className="sides-circle" src={newSidesImage} alt=""/>
               <img className="entree-circle" src={newEntreeImage} alt=""/>
+              {/* <CustomerComponent customerObj={this.state.customerObj}/ > */}
             </div>
           </div>
         </div>
