@@ -8,7 +8,9 @@ app.use(express.json())
 
 app.get('/api/foodchoices', choicesCtrl.getAllChoices)
 
-app.get('/api/foodchoices/:food_id', plateCtrl.getChoiceByID)
+// app.get('/api/foodchoices/:food_id', plateCtrl.getChoiceByID)
+
+app.post('/api/foodchoices', plateCtrl.addFood)
 
 app.listen(SERVER_PORT, () => 
     console.log(`Server running in port ${SERVER_PORT}`)
